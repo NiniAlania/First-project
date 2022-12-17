@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-font:'Montserrat', sans-serif;
+    --secondary-font: 'Kenia', cursive;
+    --primary-color: #000000;
+    --secondary-color: #3a3838;
+    --active-color: #C9B200;
+    --hover-color: #C9B200;
+    
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.active {
+  color: var(--active-color) !important;
+}
+
+
+header {
+  width: 100%;
+  height: 144px;
+  position: fixed;
+  background-color: white;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+header section {
+  width: 75%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+header section .left-header {
+  display: flex;
+  align-items: center;
+}
+
+header section .left-header a {
+  height: 45px;
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  border-left: solid black 2px;
+  padding: 5px;
+}
+
+header section .left-header a:hover {
+  color:#C9B200
+}
+
+header section .right-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header section .right-header nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  width: fit-content;
+}
+
+header section .right-header nav ul li a {
+  color: var(--primary-color);
+  font-family: var(--primary-font);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+header section .right-header nav ul li .logOut {
+  display: none;
+}
+
+main {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+  margin-top: 144px;
+}
+main .gallery {
+  height: 600px;
+  width: 75%;
+  background-image: url("https://cdn.dribbble.com/users/458227/screenshots/4543478/media/66221a1c0648fcaca4fdffffb0a19695.png");
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .gallery .overlay,
+main .background .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(54, 54, 54, 0.3);
+  position: absolute;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+main .gallery .overlay h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--secondary-font);
+  font-size: 40px;
+  color: var(--secondary-color)
+}
+main .gallery .overlay h2 {
+  display: flex;
+  justify-content: center;
+  font-family: var(--secondary-font);
+  font-size: 35px;
+  color: var(--secondary-color);
+  padding-top: 90px;
+}
+main .hotels {
+  width: 75%;
+  display: inline;
+  grid-template-rows: 1fr;
+  margin-top: 50px;
+}
+
+main .hotels h2 {
+  font-family: var(--secondary-font);
+  font-size: 40px;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  color:  var(--secondary-color);
+}
+
+main .hotels .hotels-top {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+  row-gap: 50px;
+}
+main .hotels .hotels-top .carousel .carousel-item .image {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5%;
+}
+
+main .hotels .hotels-top .carousel .carousel-item h5 a {
+  font-family: var(--secondary-font);
+  color: white;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+main .hotels .hotels-top .carousel .carousel-item h5 a:hover {
+  color: var(--active-color);
+}
+
+
+main .hotels .hotels-bottom {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+main .hotels .hotels-bottom a {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0px;
+  border-radius: 10%;
+  background-color: var(--active-color);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+main .hotels .hotels-bottom a button {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--primary-color);
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+main .hotels .hotels-bottom a:hover {
+  background-color: var(--primary-color);
+}
+
+main .hotels .hotels-bottom a:hover button {
+  color: var(--active-color);
+}
+
+footer {
+  width: 100%;
+  height: 144px;
+  background-color: white;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer section {
+  width: 75%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+footer section aside h5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--secondary-font);
+  font-size: 18px;
+}
+
+footer section aside p {
+  display: flex;
+  justify-content: center;
+  font-family: var(--primary-font);
+}
+
+footer section aside nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  list-style: none;
+  width: fit-content;
+  margin-left: 40px;
+}
+
+footer section aside nav ul li {
+  font-size: 20px;
+}

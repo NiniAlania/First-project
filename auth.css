@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-font:'Montserrat', sans-serif;
+    --secondary-font: 'Kenia', cursive;
+    --primary-color: #000000;
+    --secondary-color: #3a3838;
+    --active-color: #C9B200;
+    --hover-color: #C9B200;
+    
+}
+
+
+main .background{
+  width: 75%;
+  height: 600px;
+  background-image: url("https://cdn.dribbble.com/users/458227/screenshots/4543478/media/66221a1c0648fcaca4fdffffb0a19695.png") !important;
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+main .background .overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .background .overlay .form {
+  width: 400px;
+  height: 560px;
+  background-color: white;
+  border-radius: 5%;
+  box-shadow: 0px 10px 20px;
+}
+main .background .overlay .form .top {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 15px 35px 15px 35px;
+  border-bottom: solid black 1px;
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px; 
+}
+
+main .background .overlay .form .top .top-button {
+  font-family: var(--secondary-font);
+  font-size: 27px;
+}
+
+main .background .overlay .form .top .top-button span a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+main .background .overlay .form .bottom {
+  width: 80%;
+  margin-left: 38px;
+}
+
+main .background .overlay .form .bottom div h6 {
+
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+main .background .overlay .form .bottom div .guest, 
+main .background .overlay .form .bottom div .host {
+  margin:  0px;
+}
+
+main .background .overlay .form .bottom div label {
+  font-family: var(--primary-font);
+  margin-top: 15px;
+}
+
+main .background .overlay .form .bottom div div span i {
+  font-size: 20px;
+}
+
+main .background .overlay .form .bottom div a {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0px;
+  border-radius: 10%;
+  background-color: var(--active-color);
+  cursor: pointer;
+  text-decoration: none;
+  margin-top:  20px;
+}
+
+main .background .overlay .form .bottom div a button {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--primary-color);
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+main .background .overlay .form .bottom div a:hover {
+  background-color: var(--primary-color);
+}
+
+main .background .overlay .form .bottom div a:hover button {
+  color: var(--active-color);
+}
+
+footer {
+  margin-top: 50px;
+}
