@@ -12,8 +12,6 @@ const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const form = document.querySelector(".form");
-const guest = document.querySelector(".guest");
-const host = document.querySelector(".host");
 
 const url = location.href;
 const action = url.split("?").pop() || "register";
@@ -81,8 +79,7 @@ actionButton.addEventListener("click", () => {
 });
 
 function actionRegister() {
-  // let guest = guest.value;
-  // let host = host.value;
+  let role = document.querySelector('input[name="role"]:checked').value;
   let userName = name.value;
   let userLastname = lastName.value;
   let userEmail = email.value;
@@ -101,7 +98,6 @@ function actionRegister() {
       return;
     }
     if (
-      // (host === "" && guest === "") ||
       userName === "" ||
       userLastname === "" ||
       email === "" ||
@@ -111,7 +107,7 @@ function actionRegister() {
     } else {
       Swal.fire("congrats", "You have successfully registered!", "success");
       addElementInFirebase("User", {
-        // user: host || guest,
+        role: role,
         name: userName,
         lastName: userLastname,
         email: userEmail,
@@ -131,6 +127,7 @@ function actionRegister() {
         } else {
           const id = usersArrayUpdated[userIndex].id;
           sessionStorage.setItem("user_id", id);
+          sessionStorage.setItem("user_role", role);
           location.href = "index.html";
         }
       }, 1000);

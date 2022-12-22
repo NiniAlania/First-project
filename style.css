@@ -71,12 +71,11 @@ header section .right-header {
 
 header section .right-header nav ul {
   display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 30px;
   list-style: none;
   width: fit-content;
 }
+
 
 header section .right-header nav ul li a {
   color: var(--primary-color);
@@ -88,6 +87,11 @@ header section .right-header nav ul li a {
 header section .right-header nav ul li .logOut {
   display: none;
 }
+
+header section .right-header nav ul .profile {
+ display: none;
+}
+
 
 main {
   width: 100%;

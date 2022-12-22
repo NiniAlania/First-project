@@ -82,7 +82,8 @@ main .background .overlay .form .bottom div div span i {
   font-size: 20px;
 }
 
-main .background .overlay .form .bottom div a {
+main .background .overlay .form .bottom div a,
+main .background .overlay .form div a {
   width: 100px;
   height: 40px;
   display: flex;
@@ -96,7 +97,8 @@ main .background .overlay .form .bottom div a {
   margin-top:  20px;
 }
 
-main .background .overlay .form .bottom div a button {
+main .background .overlay .form .bottom div a button,
+main .background .overlay .form div a button {
   font-family: var(--secondary-font);
   font-size: 20px;
   color: var(--primary-color);
@@ -105,11 +107,13 @@ main .background .overlay .form .bottom div a button {
   cursor: pointer;
 }
 
-main .background .overlay .form .bottom div a:hover {
+main .background .overlay .form .bottom div a:hover,
+main .background .overlay .form div a:hover {
   background-color: var(--primary-color);
 }
 
-main .background .overlay .form .bottom div a:hover button {
+main .background .overlay .form .bottom div a:hover button,
+main .background .overlay .form div a:hover button {
   color: var(--active-color);
 }
 

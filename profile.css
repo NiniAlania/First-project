@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-font:'Montserrat', sans-serif;
+    --secondary-font: 'Kenia', cursive;
+    --primary-color: #000000;
+    --secondary-color: #3a3838;
+    --active-color: #C9B200;
+    --hover-color: #C9B200;
+    
+}
+
+main .background .overlay .form {
+ height:370px;
+ width: 400px;
+}
+
+main .background .overlay .form div {
+  margin-left: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+main .background .overlay .form div div {
+  display: flex;
+  justify-content: space-around;
+}
+
+main .background .overlay .form div div h2 {
+  font-family: var(--secondary-font);
+  margin-top: 7px;
+}
+
+main .background .overlay .form div div i {
+  display: flex;
+  align-items: center;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+main .background .overlay .form div input {
+  width: 350px;
+}
+
+main .background .overlay .form div label {
+  font-family: var(--primary-font);
+}
+

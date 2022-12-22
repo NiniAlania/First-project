@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./auth.css" />
+    <link rel="stylesheet" href="./profile.css" />
   </head>
   <body>
     <header>
@@ -29,8 +30,10 @@
             <ul>
               <li><a href="./index.html">Home</a></li>
               <li><a href="">Hotels</a></li>
-              <li class="profile">
-                <a href="./profile.html"><i class="fa-solid fa-user"></i></a>
+              <li>
+                <a href="./profile.html" class="profile"
+                  ><i class="fa-solid fa-user"></i
+                ></a>
               </li>
               <li><a href="" class="logOut">Log out</a></li>
               <li>
@@ -50,79 +53,28 @@
       <section class="background">
         <div class="overlay">
           <section class="form">
-            <aside class="top">
-              <aside class="left top-button">
-                <span
-                  ><a class="register" href="./auth.html?register"
-                    >Sign up</a
-                  ></span
-                >
-              </aside>
-              <aside class="right top-button">
-                <span
-                  ><a class="signIn" href="./auth.html?auth">Sign in</a></span
-                >
-              </aside>
-            </aside>
-            <aside class="bottom">
-              <div class="toggle">
-                <h6>Who are you?</h6>
-                <label for="guest">Guest</label>
-                <input
-                  type="radio"
-                  id="guest"
-                  name="role"
-                  value="guest"
-                  checked
-                />
-                <label for="host">Host</label>
-                <input type="radio" id="host" name="role" value="host" />
-              </div>
-              <div class="toggle">
-                <label for="name" class="form-label">First Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="name"
-                  placeholder="Your first name"
-                />
-              </div>
-              <div class="toggle">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  class="form-control"
-                  placeholder="Your last name"
-                />
-              </div>
+            <div>
               <div>
-                <label for="email" class="form-label">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  class="form-control"
-                  placeholder="Your email"
-                />
+                <h2>Profile Settings</h2>
+                <i id="edit" class="fa-regular fa-pen-to-square"></i>
               </div>
+              <label for="firstName">First name</label>
+              <input
+                type="text"
+                placeholder=""
+                class="form-control"
+                id="firstName-prof"
+              />
+              <label for="lastName">Last name </label>
+              <input type="text" class="form-control" id="lastName-prof" />
+              <label for="email">Email</label>
+              <input type="email" class="form-control" id="email-prof" />
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password-prof" />
               <div>
-                <label for="password" class="form-label">Password</label>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="changePasswordVisibility"
-                    ><i class="fa-regular fa-eye"></i
-                  ></span>
-                  <input
-                    type="password"
-                    id="password"
-                    class="form-control"
-                    placeholder="Your password"
-                  />
-                </div>
+                <a><button id="submit">Submit</button></a>
               </div>
-              <div>
-                <a><button id="actionButton">Sign Up</button></a>
-              </div>
-            </aside>
+            </div>
           </section>
         </div>
       </section>
@@ -176,6 +128,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./randomID.js"></script>
     <script src="./firebase.js"></script>
-    <script src="./auth.js"></script>
+    <script src="./main.js"></script>
+    <script src="./profile.js"></script>
   </body>
 </html>

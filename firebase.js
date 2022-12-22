@@ -63,7 +63,7 @@ function getElementFromFirebase(REF, id) {
         }
       });
       reject("404");
-    }, 1000);
+    }, 1500);
   });
 }
 
@@ -92,4 +92,15 @@ function removeElementFromFirebase(REF, id) {
  */
 function removeRefFromFirebase(REF) {
   firebase.database().ref(REF).remove();
+}
+
+/**
+ * ელემენტის ნაწილის განახლება
+ * @param REF - დასახელება მონაცემთა ბაზის განშტოების
+ * @param element - ელემენტი
+ */
+
+function updateFirebase(REF, element) {
+  const id = sessionStorage.getItem("user_id");
+  firebase.database().ref(`${REF}/${id}`).update(element);
 }
