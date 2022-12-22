@@ -110,7 +110,9 @@ main .gallery {
   background-size: cover;
 }
 main .gallery .overlay,
-main .background .overlay {
+main .background .overlay,
+main .host-background .overlay
+ {
   width: 100%;
   height: 100%;
   background-color: rgba(54, 54, 54, 0.3);

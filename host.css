@@ -1,0 +1,9 @@
+main .host-background {
+  height: 600px;
+  width: 100%;
+  background-image: url("https://cdn.dribbble.com/users/458227/screenshots/4543478/media/66221a1c0648fcaca4fdffffb0a19695.png");
+  position: relative;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

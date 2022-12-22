@@ -12,6 +12,8 @@ const lastName = document.querySelector("#lastName");
 const email = document.querySelector("#email");
 const password = document.querySelector("#password");
 const form = document.querySelector(".form");
+const profile = document.querySelector(".profile");
+const home = document.querySelector(".home");
 
 const url = location.href;
 const action = url.split("?").pop() || "register";
@@ -128,7 +130,16 @@ function actionRegister() {
           const id = usersArrayUpdated[userIndex].id;
           sessionStorage.setItem("user_id", id);
           sessionStorage.setItem("user_role", role);
-          location.href = "index.html";
+          if (sessionStorage.getItem("user_role") === "host") {
+            console.log("aq shemovida");
+            location.href = "host.html";
+            logIn.classList.remove("active");
+          } else {
+            console.log("err");
+            location.href = "index.html";
+            logIn.classList.remove("active");
+            home.classList.add("active");
+          }
         }
       }, 1000);
     }
@@ -153,8 +164,15 @@ function actionLogin() {
       Swal.fire("Welcome", "You have successfully authorised!", "success");
       const id = usersArrayUpdated[userIndex].id;
       sessionStorage.setItem("user_id", id);
-      location.href = "index.html";
-      logIn.classList.remove("active");
+      if (sessionStorage.getItem("user_role") === "host") {
+        console.log("aq shemovida");
+        location.href = "host.html";
+        logIn.classList.remove("active");
+      } else {
+        console.log("err");
+        location.href = "index.html";
+        logIn.classList.remove("active");
+      }
     }
   }, 1500);
 }

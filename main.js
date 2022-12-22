@@ -12,18 +12,14 @@ if (sessionStorage.getItem("user_id") !== null) {
 
 logOut.addEventListener("click", () => {
   sessionStorage.clear();
+  console.log("Shemovida");
   location.href = "index.html";
+  console.log("shemovidameored");
   logIn.style.display = "block";
   signUp.style.display = "block";
   logOut.style.display = "none";
   profile.style.display = "none";
-  console.log(location.href);
-  console.log("nini");
 });
-
-if (sessionStorage.getItem("user_role") === "host") {
-  location.href = "host.html";
-}
 
 profile.addEventListener("click", () => {
   logIn.style.display = "none";
