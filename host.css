@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-font:'Montserrat', sans-serif;
+    --secondary-font: 'Kenia', cursive;
+    --primary-color: #000000;
+    --secondary-color: #3a3838;
+    --active-color: #C9B200;
+    --hover-color: #C9B200;
+    
+}
+
 main .host-background {
   height: 600px;
   width: 100%;
@@ -7,3 +20,127 @@ main .host-background {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+main .host-background .overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .host-background .overlay .form {
+  width: 90%;
+  height: 95%;
+  background-color: white;
+  border-radius: 5%;
+}
+
+main .host-background .overlay .form .top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main .host-background .overlay .form .top h3 {
+  margin-top: 5px;
+  font-family: var(--secondary-font);
+}
+
+main .host-background .overlay .form .bottom {
+  width: 100%;
+  height: 82%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+}
+
+main .host-background .overlay .form .bottom .left {
+  display: grid;
+  grid-template-rows: 1fr 1fr 2fr;
+}
+
+
+main .host-background .overlay .form .bottom .font label{
+  display: flex;
+  justify-content: center;
+  font-family: var(--secondary-font);
+  font-size: 23px;
+}
+
+main .host-background .overlay .form .bottom .left .name input {
+  width: 65%;
+  margin-left: 90px;
+}
+
+main .host-background .overlay .form .bottom .left .image input {
+  width: 65%;
+  margin-left: 90px;
+}
+
+
+main .host-background .overlay .form .bottom .right {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+} 
+
+main .host-background .overlay .form .bottom .left .description {
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+}
+
+main .host-background .overlay .form .bottom .left .description textarea {
+  margin-top: 5px;
+  width: 70%;
+  margin-left: 80px;
+  resize: none;
+}
+
+main .host-background .overlay .form .bottom .right .rooms input {
+  display: flex;
+  justify-content: center;
+  width: 65%;
+  margin-left:  90px;
+  margin-top: 5px;
+}
+
+main .host-background .overlay .form .bottom .right .rooms i {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+}
+
+main .host-background .overlay .form .last {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+ main .host-background .overlay .form a {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0px;
+  border-radius: 10%;
+  background-color: var(--active-color);
+  cursor: pointer;
+  text-decoration: none;
+ }
+
+ main .host-background .overlay .form a button {
+  font-family: var(--secondary-font);
+  font-size: 20px;
+  color: var(--primary-color);
+  border: 0px;
+  background-color: transparent;
+  cursor: pointer;
+ }
+
+ main .host-background .overlay .form a:hover {
+  background-color: var(--primary-color);
+ }
+
+
+ main .host-background .overlay .form a:hover button {
+  color: var(--active-color);
+ }
