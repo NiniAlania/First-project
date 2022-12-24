@@ -28,7 +28,7 @@
         <aside class="right-header">
           <nav>
             <ul>
-              <li><a href="./index.html" class="active">Home</a></li>
+              <li><a href="./index.html" class="active home">Home</a></li>
               <li><a href="">Hotels</a></li>
               <li class="profile">
                 <a href="./profile.html"><i class="fa-solid fa-user"></i></a>
@@ -53,56 +53,77 @@
           <section class="form">
             <aside class="top">
               <h3>Upload Your Hotel Info</h3>
-              <i class="fa-regular fa-pen-to-square"></i>
+              <i class="fa-regular fa-pen-to-square" id="editHotelInfo"></i>
             </aside>
             <aside class="bottom">
-              <aside class="left">
-                <aside class="name font">
-                  <label for="hotel-name" class="form-label">Hotel name</label>
-                  <input
-                    type="text"
-                    id="hotel-name "
-                    class="form-control"
-                    placeholder="Please, insert your hotel name"
-                  />
-                </aside>
-                <aside class="image font">
-                  <label for="hotel-image">Hotel Image</label>
-                  <input type="file" id="hotel-image" class="form-control" />
-                </aside>
-                <aside class="description font">
-                  <label for="description">Description</label>
-                  <textarea
-                    id="description"
-                    class="form-control"
-                    placeholder="please, insert hotel details"
-                  ></textarea>
-                </aside>
+              <aside class="name font">
+                <label for="hotelName" class="form-label">Hotel name</label>
+                <input
+                  type="text"
+                  id="hotelName"
+                  class="form-control"
+                  placeholder="Please, insert your hotel name"
+                />
               </aside>
-              <aside class="right">
-                <aside class="rooms font">
-                  <label for="room1-image">Room1-Image</label>
-                  <input type="file" id="room2-image" class="form-control" />
-                  <input type="date" class="form-control" />
-                </aside>
-                <aside class="rooms font">
-                  <label for="room2-image">Room2-Image</label>
-                  <input type="file" id="room2-image" class="form-control" />
-                  <input type="date" class="form-control" />
-                </aside>
-                <aside class="rooms fonr">
-                  <i id="plus" class="fa-solid fa-plus"></i>
-                </aside>
+              <aside class="image font">
+                <label for="hotel-image">Hotel Image</label>
+                <input type="file" id="hotel-image" class="form-control" />
+              </aside>
+              <aside class="description font">
+                <label for="description">Description</label>
+                <textarea
+                  id="description"
+                  class="form-control"
+                  placeholder="Please, insert hotel details"
+                ></textarea>
+              </aside>
+              <aside class="last">
+                <a id="submit"><button class="">Submit</button></a>
               </aside>
             </aside>
-            <aside class="last">
-              <a href=""><button class="">Submit</button></a>
+          </section>
+          <section class="form">
+            <aside class="top">
+              <h3>Upload Your Room Info</h3>
+            </aside>
+            <aside class="bottom">
+              <aside class="rooms font">
+                <aside class="info">
+                  <label for="room-image">Room Image</label>
+                  <input type="file" id="room-image" class="form-control" />
+                </aside>
+                <aside class="decription">
+                  <label for="room-description">Room-Description</label>
+                  <textarea
+                    id="room-description"
+                    class="form-control"
+                    placeholder="Please, insert hotel details"
+                  ></textarea>
+                </aside>
+                <label for="calendar">Calendar</label>
+                <input id="calendar" type="date" class="form-control" />
+              </aside>
+              <aside class="room-button">
+                <a id="add-room"><button>Add Room</button></a>
+              </aside>
             </aside>
           </section>
         </div>
       </section>
       <section class="host-background">
-        <div class="overlay"></div>
+        <div class="overlay-second">
+          <section class="display">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Rooms</th>
+                </tr>
+              </thead>
+              <tbody id="display" class="cards"></tbody>
+            </table>
+          </section>
+          <section class="form forCards"></section>
+        </div>
       </section>
     </main>
     <footer>
@@ -155,5 +176,6 @@
     <script src="./randomID.js"></script>
     <script src="./firebase.js"></script>
     <script src="./main.js"></script>
+    <script src="./host.js"></script>
   </body>
 </html>

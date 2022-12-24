@@ -28,6 +28,10 @@ function addElementInFirebase(REF, data) {
   firebase.database().ref(`${REF}/${randomID()}`).set(data);
 }
 
+function addElementInfirebaseWithId(REF, id, data) {
+  firebase.database().ref(`${REF}/${id}`).set(data);
+}
+
 /**
  * მთლიანი განშოების წამოღება firebase-იდან
  * @param REF - დასახელება მონაცემთა ბაზის განშტოების

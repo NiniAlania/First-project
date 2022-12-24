@@ -131,11 +131,9 @@ function actionRegister() {
           sessionStorage.setItem("user_id", id);
           sessionStorage.setItem("user_role", role);
           if (sessionStorage.getItem("user_role") === "host") {
-            console.log("aq shemovida");
             location.href = "host.html";
             logIn.classList.remove("active");
           } else {
-            console.log("err");
             location.href = "index.html";
             logIn.classList.remove("active");
             home.classList.add("active");

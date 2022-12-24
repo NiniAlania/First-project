@@ -22,14 +22,15 @@ main .host-background {
 }
 
 main .host-background .overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
 }
 
 main .host-background .overlay .form {
-  width: 90%;
-  height: 95%;
+  margin: 30px 50px;
+  width: 85%;
+  height: 90%;
   background-color: white;
   border-radius: 5%;
 }
@@ -38,26 +39,27 @@ main .host-background .overlay .form .top {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 main .host-background .overlay .form .top h3 {
-  margin-top: 5px;
+  margin-top: 20px;
   font-family: var(--secondary-font);
+  margin-bottom: 20px;
+}
+
+main .host-background .overlay .form .top i {
+  font-size: 20px;
+  margin-bottom: 5px;
 }
 
 main .host-background .overlay .form .bottom {
   width: 100%;
   height: 82%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr ;
   gap: 3px;
 }
-
-main .host-background .overlay .form .bottom .left {
-  display: grid;
-  grid-template-rows: 1fr 1fr 2fr;
-}
-
 
 main .host-background .overlay .form .bottom .font label{
   display: flex;
@@ -66,35 +68,26 @@ main .host-background .overlay .form .bottom .font label{
   font-size: 23px;
 }
 
-main .host-background .overlay .form .bottom .left .name input {
+main .host-background .overlay .form .bottom .name input {
   width: 65%;
   margin-left: 90px;
 }
 
-main .host-background .overlay .form .bottom .left .image input {
+main .host-background .overlay .form .bottom .image input {
   width: 65%;
   margin-left: 90px;
 }
 
-
-main .host-background .overlay .form .bottom .right {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-} 
-
-main .host-background .overlay .form .bottom .left .description {
-  display: grid;
-  grid-template-rows: 1fr 3fr;
-}
-
-main .host-background .overlay .form .bottom .left .description textarea {
+main .host-background .overlay .form .bottom .description textarea,
+main .host-background .overlay .form .bottom   .rooms  textarea {
   margin-top: 5px;
   width: 70%;
   margin-left: 80px;
   resize: none;
+  height: 170px;
 }
 
-main .host-background .overlay .form .bottom .right .rooms input {
+main .host-background .overlay .form .bottom  .rooms input {
   display: flex;
   justify-content: center;
   width: 65%;
@@ -102,7 +95,7 @@ main .host-background .overlay .form .bottom .right .rooms input {
   margin-top: 5px;
 }
 
-main .host-background .overlay .form .bottom .right .rooms i {
+main .host-background .overlay .form .bottom  .rooms i {
   display: flex;
   justify-content: center;
   font-size: 30px;
@@ -111,11 +104,10 @@ main .host-background .overlay .form .bottom .right .rooms i {
 main .host-background .overlay .form .last {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
 }
 
  main .host-background .overlay .form a {
-  width: 200px;
+  width: 100px;
   height: 40px;
   display: flex;
   justify-content: center;
@@ -143,4 +135,33 @@ main .host-background .overlay .form .last {
 
  main .host-background .overlay .form a:hover button {
   color: var(--active-color);
+ }
+
+ main .host-background .overlay .form .room-button {
+  display: flex;
+  justify-content: center;
+ }
+
+
+ main .host-background .overlay-second {
+  display: grid;
+  grid-template-rows: 1fr 4fr;
+  margin-left: 70px;;
+ }
+
+
+ main .host-background .overlay-second .display {
+  width: 90%;
+ }
+
+ main .host-background .overlay-second .display .table thead tr th {
+  font-family: var(--secondary-font);
+  font-size: 26px;
+ }
+
+ main .host-background .overlay-second .form {
+  width: 95%;
+  height: 450px;
+  background-color: white;
+  border-radius: 5%;
  }

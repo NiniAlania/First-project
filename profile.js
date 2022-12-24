@@ -12,7 +12,6 @@ function setInformation() {
   const id = sessionStorage.getItem("user_id");
 
   getElementFromFirebase("User", id).then((user) => {
-    console.log(user.data);
     firstName.value = user.data.name;
     firstName.disabled = true;
     lastName.value = user.data.lastName;
