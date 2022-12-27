@@ -72,96 +72,62 @@ changePasswordVisibility.addEventListener("click", () => {
   isShown = !isShown;
 });
 
-actionButton.addEventListener("click", () => {
+actionButton.addEventListener("click", async () => {
   if (isAction) {
-    actionRegister();
+    await actionRegister();
   } else {
-    actionLogin();
+    await actionLogin();
   }
 });
 
-function actionRegister() {
+async function actionRegister() {
   let role = document.querySelector('input[name="role"]:checked').value;
   let userName = name.value;
   let userLastname = lastName.value;
   let userEmail = email.value;
   let userPassword = password.value;
 
-  const usersArray = getRefFromFirebase("User");
+  const usersArray = await getRefFromFirebase("User");
 
-  setTimeout(() => {
-    let isUserUnique = usersArray.some((user) => user.data.email === userEmail);
-    if (isUserUnique) {
-      Swal.fire(
-        "Failed! User with this Email address already exists",
-        "please try another or sing in",
-        "error"
-      );
-      return;
-    }
-    if (
-      userName === "" ||
-      userLastname === "" ||
-      email === "" ||
-      password === ""
-    ) {
-      Swal.fire("Failed!", "Please fill out all fields", "warning");
-    } else {
-      Swal.fire("congrats", "You have successfully registered!", "success");
-      addElementInFirebase("User", {
-        role: role,
-        name: userName,
-        lastName: userLastname,
-        email: userEmail,
-        password: userPassword,
-      });
-      actionButton.disabled = true;
-
-      const usersArrayUpdated = getRefFromFirebase("User");
-
-      setTimeout(() => {
-        const userIndex = usersArrayUpdated.findIndex(
-          (user) =>
-            user.data.email === userEmail && user.data.password === userPassword
-        );
-        if (userIndex === -1) {
-          Swal.fire("Failed!", "Wrong data", "error");
-        } else {
-          const id = usersArrayUpdated[userIndex].id;
-          sessionStorage.setItem("user_id", id);
-          sessionStorage.setItem("user_role", role);
-          if (sessionStorage.getItem("user_role") === "host") {
-            location.href = "host.html";
-            logIn.classList.remove("active");
-          } else {
-            location.href = "index.html";
-            logIn.classList.remove("active");
-            home.classList.add("active");
-          }
-        }
-      }, 1000);
-    }
-  }, 1500);
-}
-
-function actionLogin() {
-  let userEmail = email.value;
-  let userPassword = password.value;
-
-  const usersArrayUpdated = getRefFromFirebase("User");
-
-  setTimeout(() => {
-    const userIndex = usersArrayUpdated.findIndex((user) => {
-      return (
-        user.data.email === userEmail && user.data.password === userPassword
-      );
+  let isUserUnique = usersArray.some((user) => user.data.email === userEmail);
+  if (isUserUnique) {
+    Swal.fire(
+      "Failed! User with this Email address already exists",
+      "please try another or sing in",
+      "error"
+    );
+    return;
+  }
+  if (
+    userName === "" ||
+    userLastname === "" ||
+    email === "" ||
+    password === ""
+  ) {
+    Swal.fire("Failed!", "Please fill out all fields", "warning");
+  } else {
+    Swal.fire("congrats", "You have successfully registered!", "success");
+    await addElementInFirebase("User", {
+      role: role,
+      name: userName,
+      lastName: userLastname,
+      email: userEmail,
+      password: userPassword,
     });
+    actionButton.disabled = true;
+
+    const usersArrayUpdated = await getRefFromFirebase("User");
+
+    const userIndex = usersArrayUpdated.findIndex(
+      (user) =>
+        user.data.email === userEmail && user.data.password === userPassword
+    );
     if (userIndex === -1) {
       Swal.fire("Failed!", "Wrong data", "error");
     } else {
-      Swal.fire("Welcome", "You have successfully authorised!", "success");
       const id = usersArrayUpdated[userIndex].id;
       sessionStorage.setItem("user_id", id);
+      sessionStorage.setItem("user_role", role);
       if (sessionStorage.getItem("user_role") === "host") {
         console.log("aq shemovida");
         location.href = "host.html";
@@ -170,7 +136,39 @@ function actionLogin() {
         console.log("err");
         location.href = "index.html";
         logIn.classList.remove("active");
+        home.classList.add("active");
       }
     }
-  }, 1500);
+  }
+}
+
+async function actionLogin() {
+  let userEmail = email.value;
+  let userPassword = password.value;
+
+  const usersArrayUpdated = await getRefFromFirebase("User");
+
+  const userIndex = usersArrayUpdated.findIndex((user) => {
+    return (
+      user.data.email === userEmail && user.data.password === userPassword
+    );
+  });
+  if (userIndex === -1) {
+    Swal.fire("Failed!", "Wrong data", "error");
+  } else {
+    Swal.fire("Welcome", "You have successfully authorised!", "success");
+    const id = usersArrayUpdated[userIndex].id;
+    const role = usersArrayUpdated[userIndex].data.role;
+    sessionStorage.setItem("user_id", id);
+    sessionStorage.setItem("user_role", role);
+    if (sessionStorage.getItem("user_role") === "host") {
+      console.log("aq shemovida");
+      location.href = "host.html";
+      logIn.classList.remove("active");
+    } else {
+      console.log("err");
+      location.href = "index.html";
+      logIn.classList.remove("active");
+    }
+  }
 }

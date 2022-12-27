@@ -24,12 +24,12 @@ function generateFirebaseItem(ID, value) {
  * @param REF -  დასახელება მონაცემთა ბაზის განშტოების
  * @param data - ინფორმაცია რასაც ვამატებთ
  */
-function addElementInFirebase(REF, data) {
-  firebase.database().ref(`${REF}/${randomID()}`).set(data);
+async function addElementInFirebase(REF, data) {
+  await firebase.database().ref(`${REF}/${randomID()}`).set(data);
 }
 
-function addElementInfirebaseWithId(REF, id, data) {
-  firebase.database().ref(`${REF}/${id}`).set(data);
+async function addElementInfirebaseWithId(REF, id, data) {
+  await firebase.database().ref(`${REF}/${id}`).set(data);
 }
 
 /**
@@ -38,17 +38,13 @@ function addElementInfirebaseWithId(REF, id, data) {
  * @returns აბრუნებს განშტოებაზე არსებულ ინფორმაციას
  */
 
-function getRefFromFirebase(REF) {
-  const result = [];
-  firebase
-    .database()
-    .ref(REF)
-    .on("value", (response) => {
-      response.forEach((element) => {
-        result.push(generateFirebaseItem(element.key, element.val()));
-      });
-    });
-  return result;
+async function getRefFromFirebase(REF) {
+  const results = await firebase
+                    .database()
+                    .ref(REF)
+                    .get();
+  return Object.entries(results.toJSON())
+          .map(([key, value]) => generateFirebaseItem(key, value));
 }
 /**
  * კონკრეტული ელემენტის დაბრუნება განშტოებიდან
@@ -57,28 +53,14 @@ function getRefFromFirebase(REF) {
  * @returns აბრუნებს Promise კარგ შემთხვევაში მონაცემს, ცუდ შემთხვევაში  "404"
  */
 
-function getElementFromFirebase(REF, id) {
-  return new Promise((resolve, reject) => {
-    const array = getRefFromFirebase(REF);
-    setTimeout(() => {
-      array.forEach((element) => {
-        if (element.id === id) {
-          resolve(element);
-        }
-      });
-      reject("404");
-    }, 1500);
-  });
+async function getElementFromFirebase(REF, id) {
+  const result = await firebase
+                    .database()
+                    .ref(`${REF}/${id}`)
+                    .get();
+  return generateFirebaseItem(result.key, result.val());
 }
 
-// იმავე ფუნქციის კოდი
-// function getElementFromFirebase(REF, id) {
-//   let result = null;
-//   fisebase.database.ref(`${REF}/${id}`).on("value", (response) => {
-//     result = generateFirebaseItem(response.key, response.val());
-//   });
-//   return result;
-// }
 
 /**
  * განშტოების ელემენტის ამოშლა
@@ -86,16 +68,16 @@ function getElementFromFirebase(REF, id) {
  * @param id -
  */
 
-function removeElementFromFirebase(REF, id) {
-  firebase.database().ref(`${REF}/${id}`).remove();
+async function removeElementFromFirebase(REF, id) {
+  await firebase.database().ref(`${REF}/${id}`).remove();
 }
 
 /**
  * მთლიანი განშტოების წაშლა
  * @param REF - დასახელება მონაცემთა ბაზის განშტოების
  */
-function removeRefFromFirebase(REF) {
-  firebase.database().ref(REF).remove();
+async function removeRefFromFirebase(REF) {
+  await firebase.database().ref(REF).remove();
 }
 
 /**
@@ -104,7 +86,6 @@ function removeRefFromFirebase(REF) {
  * @param element - ელემენტი
  */
 
-function updateFirebase(REF, element) {
-  const id = sessionStorage.getItem("user_id");
-  firebase.database().ref(`${REF}/${id}`).update(element);
+async function updateFirebase(REF, id, element) {
+  await firebase.database().ref(`${REF}/${id}`).update(element);
 }

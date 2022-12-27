@@ -6,21 +6,18 @@ const profileIcon = document.querySelector(".profile");
 const edit = document.querySelector("#edit");
 const submit = document.querySelector("#submit");
 
-setInformation();
-
-function setInformation() {
+async function setInformation() {
   const id = sessionStorage.getItem("user_id");
 
-  getElementFromFirebase("User", id).then((user) => {
-    firstName.value = user.data.name;
-    firstName.disabled = true;
-    lastName.value = user.data.lastName;
-    lastName.disabled = true;
-    email.value = user.data.email;
-    email.disabled = true;
-    password.value = user.data.password;
-    password.disabled = true;
-  });
+  const user = await getElementFromFirebase("User", id);
+  firstName.value = user.data.name;
+  firstName.disabled = true;
+  lastName.value = user.data.lastName;
+  lastName.disabled = true;
+  email.value = user.data.email;
+  email.disabled = true;
+  password.value = user.data.password;
+  password.disabled = true;
 }
 
 edit.addEventListener("click", () => {
@@ -30,18 +27,24 @@ edit.addEventListener("click", () => {
   password.disabled = false;
 });
 
-function newInfo() {
-  updateFirebase("User", {
+async function newInfo() {
+  const userId = sessionStorage.getItem("user_id");
+  await updateFirebase("User", userId, {
     name: firstName.value,
     lastName: lastName.value,
     email: email.value,
     password: password.value,
   });
 }
-submit.addEventListener("click", () => {
-  newInfo();
+
+submit.addEventListener("click", async () => {
+  await newInfo();
   firstName.disabled = true;
   lastName.disabled = true;
   email.disabled = true;
   password.disabled = true;
 });
+
+(async () => {
+  await setInformation();
+})();

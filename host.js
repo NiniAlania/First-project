@@ -8,6 +8,7 @@ const addRoom = document.querySelector("#add-room");
 const submit = document.querySelector("#submit");
 const forCards = document.querySelector(".forCards");
 const change = document.querySelector(".change");
+
 function convertBase64(file) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();
@@ -23,17 +24,15 @@ function convertBase64(file) {
   });
 }
 
-submit.addEventListener("click", () => {
-  hotelRegister();
-  setHotelInformation();
+submit.addEventListener("click", async () => {
+  await hotelRegister();
+  await setHotelInformation();
 });
 
-setHotelInformation();
-drawCard();
 
-addRoom.addEventListener("click", (event) => {
-  roomRegister();
-  drawCard();
+addRoom.addEventListener("click", async () => {
+  await roomRegister();
+  await drawCard();
 });
 
 async function hotelRegister() {
@@ -41,78 +40,74 @@ async function hotelRegister() {
   let hotelDescription = description.value;
   let hotelImage = image.files[0];
 
-  const hotelsArray = getRefFromFirebase("Hotel");
+  const hotelsArray = await getRefFromFirebase("Hotel");
 
-  setTimeout(async () => {
-    let isHotelUnique = hotelsArray.some(
-      (user) => user.data.hotelName === hotelName
+  let isHotelUnique = hotelsArray.some(
+    (user) => user.data.hotelName === hotelName
+  );
+
+  if (isHotelUnique) {
+    Swal.fire(
+      "Failed! Hotel with this name already exists",
+      "please try another name",
+      "error"
     );
+    return;
+  }
 
-    if (isHotelUnique) {
-      Swal.fire(
-        "Failed! Hotel with this name already exists",
-        "please try another name",
-        "error"
-      );
-      return;
-    }
-
-    if (hotelName === "" || hotelDescription === "") {
-      Swal.fire("Failed!", "Please fill out all fields", "warning");
-    } else {
-      Swal.fire(
-        "congrats",
-        "You have successfully registered your hotel!",
-        "success"
-      );
-      const hotelBase64 = await convertBase64(hotelImage);
-      const userID = sessionStorage.getItem("user_id");
-      addElementInfirebaseWithId("Hotel", userID, {
+  if (hotelName === "" || hotelDescription === "") {
+    Swal.fire("Failed!", "Please fill out all fields", "warning");
+  } else {
+    Swal.fire(
+      "congrats",
+      "You have successfully registered your hotel!",
+      "success"
+    );
+    const hotelBase64 = await convertBase64(hotelImage);
+    const userID = sessionStorage.getItem("user_id");
+    await addElementInfirebaseWithId("Hotel", userID, {
         hotelName: hotelName,
         hotelDescription: hotelDescription,
         hotelImageUrl: hotelBase64,
-      });
-      submit.disabled = true;
-    }
-  });
+    });
+    submit.disabled = true;
+  }
 }
 
 async function roomRegister() {
   let roomPhoto = roomImage.files[0];
   let roomDescription2 = roomDescription.value;
 
-  setTimeout(async () => {
-    if (roomPhoto.files > 0 || roomDescription2 === "") {
-      Swal.fire("Failed!", "Please fill out all fields", "warning");
-    } else {
-      Swal.fire(
-        "congrats",
-        "You have successfully registered your hotel!",
-        "success"
-      );
-      const roomBase64 = await convertBase64(roomPhoto);
-      const userID = sessionStorage.getItem("user_id");
-      const hotelDetails = await getElementFromFirebase("Hotel", userID);
-      console.log(hotelDetails);
-      if (!hotelDetails.data.hasOwnProperty("rooms")) {
-        hotelDetails.data["rooms"] = [];
-      }
-      const newRooms = hotelDetails.data.rooms;
-      newRooms.push({
-        roomID: randomID(),
-        roomImage: roomBase64,
-        roomDescription: roomDescription2,
-      });
-      updateFirebase("Hotel", { rooms: newRooms });
-      addRoom.disabled = true;
+  if (roomPhoto.files > 0 || roomDescription2 === "") {
+    Swal.fire("Failed!", "Please fill out all fields", "warning");
+  } else {
+    Swal.fire(
+      "congrats",
+      "You have successfully registered your hotel!",
+      "success"
+    );
+    const roomBase64 = await convertBase64(roomPhoto);
+    const userID = sessionStorage.getItem("user_id");
+    const hotelDetails = await getElementFromFirebase("Hotel", userID)
+    if (!hotelDetails.data.hasOwnProperty("rooms")) {
+      hotelDetails.data["rooms"] = [];
     }
-  });
+    const newRooms = hotelDetails.data.rooms;
+    newRooms.push({
+      roomID: randomID(),
+      roomImage: roomBase64,
+      roomDescription: roomDescription2,
+    });
+    await updateFirebase("Hotel", userID, { rooms: newRooms });
+    addRoom.disabled = true;
+  }
 }
 
-function setHotelInformation() {
+async function setHotelInformation() {
   const id = sessionStorage.getItem("user_id");
 
-  getElementFromFirebase("Hotel", id).then((hotel) => {
+  const hotel = await getElementFromFirebase("Hotel", id);
+  if (hotel.data !== null) {
     hName.value = hotel.data.hotelName;
     hName.disabled = true;
     description.value = hotel.data.hotelDescription;
@@ -125,18 +120,29 @@ function setHotelInformation() {
       <img src="${forImage}" class="card-img-top">
     </div>
   `;
-  });
+  }
 }
 
 async function drawCard() {
+  forCards.innerHTML = "";
   const id = sessionStorage.getItem("user_id");
 
   const hotel = await getElementFromFirebase("Hotel", id);
-  hotel.data.rooms.forEach((room) => {
-    forCards.innerHTML += `
-    <div class="card" style="width: 18rem;">
-      <img src="${room.roomImage}" class="card-img-top">
-    </div>
-  `;
-  });
+  if (hotel.data !== null && hotel.data.hasOwnProperty("rooms")) {
+    hotel.data.rooms.forEach((room) => {
+      forCards.innerHTML += `
+      <div class="card" style="width: 18rem;">
+        <img src="${room.roomImage}" class="card-img-top">
+        <p>${room.roomDescription}</p>
+      </div>
+
+
+      `;
+    });
+  }
 }
+
+(async () => {
+  await setHotelInformation();
+  await drawCard();
+})();

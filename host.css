@@ -172,3 +172,7 @@ main .host-background .overlay .form .last {
   border-radius: 5%;
  }
 
+ main .host-background .overlay-second .forCards {
+  display: flex;
+  justify-content: space-around;
+ } 
