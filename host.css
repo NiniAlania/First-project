@@ -61,6 +61,12 @@ main .host-background .overlay .form .bottom {
   gap: 3px;
 }
 
+main .host-background .overlay .form .bottom .image div {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
 main .host-background .overlay .form .bottom .font label{
   display: flex;
   justify-content: center;
@@ -165,3 +171,4 @@ main .host-background .overlay .form .last {
   background-color: white;
   border-radius: 5%;
  }
+
