@@ -39,12 +39,13 @@ async function addElementInfirebaseWithId(REF, id, data) {
  */
 
 async function getRefFromFirebase(REF) {
-  const results = await firebase
-                    .database()
-                    .ref(REF)
-                    .get();
-  return Object.entries(results.toJSON())
-          .map(([key, value]) => generateFirebaseItem(key, value));
+  const results = await firebase.database().ref(REF).get();
+  if (results.toJSON() === null) {
+    return [];
+  }
+  return Object.entries(results.toJSON()).map(([key, value]) =>
+    generateFirebaseItem(key, value)
+  );
 }
 /**
  * კონკრეტული ელემენტის დაბრუნება განშტოებიდან
@@ -54,13 +55,9 @@ async function getRefFromFirebase(REF) {
  */
 
 async function getElementFromFirebase(REF, id) {
-  const result = await firebase
-                    .database()
-                    .ref(`${REF}/${id}`)
-                    .get();
+  const result = await firebase.database().ref(`${REF}/${id}`).get();
   return generateFirebaseItem(result.key, result.val());
 }
-
 
 /**
  * განშტოების ელემენტის ამოშლა

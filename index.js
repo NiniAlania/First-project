@@ -2,11 +2,11 @@ const container = document.querySelector(".hotels-top");
 
 async function addCard() {
   const hotelsArray = getRefFromFirebase("Hotel");
-
+  let i = 0;
   setTimeout(() => {
     hotelsArray.every((hotel) => {
       container.innerHTML += `<div
-      id="carouselExampleCaptions"
+      id="carouselExampleCaptions${i}"
       class="carousel slide"
       data-bs-ride="false"
     >
@@ -67,6 +67,7 @@ async function addCard() {
         <span class="visually-hidden">Next</span>
       </button>
     </div>`;
+      i++;
     });
   }, 1500);
 }

@@ -29,7 +29,6 @@ submit.addEventListener("click", async () => {
   await setHotelInformation();
 });
 
-
 addRoom.addEventListener("click", async () => {
   await roomRegister();
   await drawCard();
@@ -66,9 +65,9 @@ async function hotelRegister() {
     const hotelBase64 = await convertBase64(hotelImage);
     const userID = sessionStorage.getItem("user_id");
     await addElementInfirebaseWithId("Hotel", userID, {
-        hotelName: hotelName,
-        hotelDescription: hotelDescription,
-        hotelImageUrl: hotelBase64,
+      hotelName: hotelName,
+      hotelDescription: hotelDescription,
+      hotelImageUrl: hotelBase64,
     });
     submit.disabled = true;
   }
@@ -78,9 +77,11 @@ async function roomRegister() {
   let roomPhoto = roomImage.files[0];
   let roomDescription2 = roomDescription.value;
 
-  if (roomPhoto.files > 0 || roomDescription2 === "") {
+  id = sessionStorage.getItem("user_id");
+  const hotel = await getElementFromFirebase("Hotel", id);
+  if (roomPhoto.files < 0 || roomDescription2 === "") {
     Swal.fire("Failed!", "Please fill out all fields", "warning");
-  } else {
+  } else if (hotel.data.rooms == undefined || hotel.data.rooms.length < 4) {
     Swal.fire(
       "congrats",
       "You have successfully registered your hotel!",
@@ -88,7 +89,7 @@ async function roomRegister() {
     );
     const roomBase64 = await convertBase64(roomPhoto);
     const userID = sessionStorage.getItem("user_id");
-    const hotelDetails = await getElementFromFirebase("Hotel", userID)
+    const hotelDetails = await getElementFromFirebase("Hotel", userID);
     if (!hotelDetails.data.hasOwnProperty("rooms")) {
       hotelDetails.data["rooms"] = [];
     }
@@ -100,6 +101,8 @@ async function roomRegister() {
     });
     await updateFirebase("Hotel", userID, { rooms: newRooms });
     addRoom.disabled = true;
+  } else {
+    Swal.fire("Failed!", "The rooms are full", "warning");
   }
 }
 
