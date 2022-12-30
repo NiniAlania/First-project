@@ -129,12 +129,14 @@ async function actionRegister() {
       sessionStorage.setItem("user_id", id);
       sessionStorage.setItem("user_role", role);
       if (sessionStorage.getItem("user_role") === "host") {
-        console.log("aq shemovida");
         location.href = "host.html";
         logIn.classList.remove("active");
-      } else {
-        console.log("err");
+      } else if (sessionStorage.getItem("user_role") === "guest") {
         location.href = "index.html";
+        logIn.classList.remove("active");
+        home.classList.add("active");
+      } else {
+        location.href = "hotels.html";
         logIn.classList.remove("active");
         home.classList.add("active");
       }
@@ -149,9 +151,7 @@ async function actionLogin() {
   const usersArrayUpdated = await getRefFromFirebase("User");
 
   const userIndex = usersArrayUpdated.findIndex((user) => {
-    return (
-      user.data.email === userEmail && user.data.password === userPassword
-    );
+    return user.data.email === userEmail && user.data.password === userPassword;
   });
   if (userIndex === -1) {
     Swal.fire("Failed!", "Wrong data", "error");

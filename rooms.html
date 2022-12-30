@@ -22,6 +22,7 @@
     />
     <link rel="stylesheet" href="./calendar.css" />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./rooms.css" />
   </head>
   <body>
     <header>
@@ -53,7 +54,56 @@
     </header>
     <main>
       <section class="gallery">
-        <div class="overlay"></div>
+        <div class="overlay">
+          <section class="roomForm">
+            <aside class="top">
+              <h3>Room Details</h3>
+            </aside>
+            <aside class="bottomFirst">
+              <aside>
+                <label for="yourHotel" class="form-label">Hotel name</label>
+                <input type="text" id="yourHotel" class="form-control" />
+              </aside>
+              <aside>
+                <label for="yourHotelImage" class="form-label"
+                  >Hotel Image</label
+                >
+                <div class="yourHotelImage"></div>
+              </aside>
+              <aside>
+                <label for="yourHotelDescription" class="form-label"
+                  >Description</label
+                >
+                <textarea
+                  id="yourHotelDescription"
+                  class="form-control"
+                ></textarea>
+              </aside>
+            </aside>
+            <aside class="bottomSecond">
+              <aside>
+                <label for="yourRoom" class="form-label">Room</label>
+                <div class="yourRoom"></div>
+              </aside>
+              <aside>
+                <label for="yourHoteldescription" class="form-label"
+                  >Description</label
+                >
+                <textarea
+                  id="yourRoomDescriptiondescription"
+                  class="form-control"
+                ></textarea>
+              </aside>
+              <aside>
+                <label class="form-label">Reservation</label>
+                <div id="calendar"></div>
+              </aside>
+            </aside>
+            <aside class="last">
+              <button class="submit">Approve</button>
+            </aside>
+          </section>
+        </div>
       </section>
     </main>
     <footer>
@@ -108,5 +158,7 @@
     <script src="./randomID.js"></script>
     <script src="./firebase.js"></script>
     <script src="./main.js"></script>
+    <script src="./rooms.js"></script>
+  </footer>
   </body>
 </html>

@@ -1,73 +1,82 @@
 const container = document.querySelector(".hotels-top");
+const seeMore = document.querySelector(".moreHotels");
 
-async function addCard() {
-  const hotelsArray = getRefFromFirebase("Hotel");
-  let i = 0;
-  setTimeout(() => {
-    hotelsArray.every((hotel) => {
-      container.innerHTML += `<div
-      id="carouselExampleCaptions${i}"
-      class="carousel slide"
-      data-bs-ride="false"
-    >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img
-            src="${hotel.data.hotelImageUrl}"
-            class="d-block w-100 image"
-            alt="..."
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5><a href="./auth.html">Book Now</a></h5>
-          </div>
+let hotelsArray;
+
+let index = 0;
+
+async function addCarousel() {
+  let result = "";
+
+  for (let i = index; i < Math.min(index + 4, hotelsArray.length); i++) {
+    const hotel = hotelsArray[i];
+    let top = `<div
+    id="carouselExampleCaptions${i}"
+    class="carousel slide"
+    data-bs-ride="false"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="${hotel.data.hotelImageUrl}"
+          class="d-block w-100 image"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5><a href="booking.html?hotelID=${hotel.id}">Book Now</a></h5>
         </div>
-        <div class="carousel-item">
-          <img
-            src="${hotel.data.rooms.roomImage}"
-            class="d-block w-100 image"
-            alt="..."
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5><a href="./auth.html">Book Now</a>/h5>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img
-            src="https://media.radissonhotels.net/image/radisson-blu-iveria-hotel-tbilisi-city-centre/guest-room/16256-114261-f70788875_3xl.jpg?impolicy=Card"
-            class="d-block w-100 image"
-            alt="..."
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5><a href="./auth.html">Book Now</a></h5>
-          </div>
-        </div>
-      </div>
-      <button
-        class="carousel-control-prev"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="prev"
-      >
-        <span
-          class="carousel-control-prev-icon"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button
-        class="carousel-control-next"
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide="next"
-      >
-        <span
-          class="carousel-control-next-icon"
-          aria-hidden="true"
-        ></span>
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>`;
-      i++;
+
+    let mid = "";
+
+    Object.values(hotel.data.rooms).forEach((room) => {
+      mid += ` <div class="carousel-item">
+              <img
+                src="${room.roomImage}"
+                  class="d-block w-100 image"
+                  alt="..."
+                />
+              <div class="carousel-caption d-none d-md-block">
+                <h5><a href="booking.html?hotelID=${hotel.id}&roomID=${room.roomID}">Book Now</a></h5>
+              </div>
+             </div>`;
     });
-  }, 1500);
+
+    let bot = `<button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleCaptions${i}"
+    data-bs-slide="prev"
+     >
+    <span
+      class="carousel-control-prev-icon"
+      aria-hidden="true"
+    ></span>
+    <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleCaptions${i}"
+    data-bs-slide="next"
+     >
+    <span
+      class="carousel-control-next-icon"
+      aria-hidden="true"
+    ></span>
+     <span class="visually-hidden">Next</span>
+     </button>
+     </div>`;
+    container.innerHTML += top + mid + bot;
+  }
+  index += 4;
 }
+
+seeMore.addEventListener("click", async () => {
+  await addCarousel();
+});
+
+(async () => {
+  hotelsArray = await getRefFromFirebase("Hotel");
+  await addCarousel();
+})();

@@ -134,12 +134,12 @@ async function drawCard() {
   if (hotel.data !== null && hotel.data.hasOwnProperty("rooms")) {
     hotel.data.rooms.forEach((room) => {
       forCards.innerHTML += `
+      <a href= "rooms.html?hotelID=${id}&roomID=${room.roomID}"> 
       <div class="card" style="width: 18rem;">
         <img src="${room.roomImage}" class="card-img-top">
         <p>${room.roomDescription}</p>
       </div>
-
-
+      </a>
       `;
     });
   }
