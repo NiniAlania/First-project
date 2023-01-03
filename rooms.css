@@ -30,6 +30,7 @@ main .gallery .overlay .roomForm {
 main .gallery .overlay .roomForm .top {
   display: flex;
   justify-content: center;
+  height: 30px;
 }
 
 main .gallery .overlay .roomForm .top h3 {
@@ -37,10 +38,23 @@ main .gallery .overlay .roomForm .top h3 {
   font-size: 30px;
 }
 
-main .gallery .overlay .roomForm .bottomFirst {
-  margin-top: 20px;
-  display: flex;
-  justify-content: space-around;
+main .gallery .overlay .roomForm .top #edit {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+main .gallery .overlay .roomForm .middle {
+  display: grid;
+  grid-template-columns:  1fr 1fr;
+  height: 90%;
+
+}
+
+main .gallery .overlay .roomForm .bottomFirst,
+main .gallery .overlay .roomForm .bottomSecond {
+  display: grid;
+ justify-content: center;
+
 }
 
 main .gallery .overlay .roomForm .bottomFirst aside label,
@@ -48,32 +62,30 @@ main .gallery .overlay .roomForm .bottomSecond aside label {
   font-family: var(--secondary-font);
 }
 
+main .gallery .overlay .roomForm .bottomFirst aside input {
+
+  width: 200px;
+}
 
 main .gallery .overlay .roomForm .bottomFirst aside input {
 
   width: 200px;
 }
 
+main .gallery .overlay .roomForm .bottomFirst aside input {
+
+  width: 200px;
+}
 
 main .gallery .overlay .roomForm .bottomFirst aside textarea,
 main .gallery .overlay .roomForm .bottomSecond aside textarea {
   width: 250px;
   resize: none;
   height: 100px;
-}
+} 
 
-main .gallery .overlay .roomForm .bottomSecond {
-  display: flex;
-  justify-content: space-around;
-}
 
-main .gallery .overlay .roomForm .last {
-
-  display: flex;
-  justify-content: center;
-}
-
-main .gallery .overlay .roomForm .last button {
+main .gallery .overlay .roomForm .bottomFirst button {
   width: 130px;
   height: 40px;
   border: 0px;
@@ -83,9 +95,23 @@ main .gallery .overlay .roomForm .last button {
   text-decoration: none;
   font-family: var(--secondary-font);
   font-size: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
 }
 
-main .gallery .overlay .roomForm .last button:hover {
+main .gallery .overlay .roomForm .bottomFirst button:hover {
   background-color: black;
   color: var(--active-color);
+}
+
+main .gallery .overlay .roomForm .bottomSecond .yourRoom {
+  margin: 0px
+}
+
+main .gallery .overlay .roomForm .bottomSecond aside label {
+  margin:  0px;
+}
+
+main .gallery .overlay .roomForm .bottomSecond aside div {
+  margin-left: 10px;
 }

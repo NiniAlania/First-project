@@ -10,7 +10,27 @@ async function addCarousel() {
 
   for (let i = index; i < Math.min(index + 4, hotelsArray.length); i++) {
     const hotel = hotelsArray[i];
-    let top = `<div
+    const role = sessionStorage.getItem("user_role");
+    let top = "";
+    if (role === "admin") {
+      top += `<div
+    id="carouselExampleCaptions${i}"
+    class="carousel slide"
+    data-bs-ride="false"
+  >
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="${hotel.data.hotelImageUrl}"
+          class="d-block w-100 image"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h5><a href="rooms.html?hotelID=${hotel.id}">Edit Details</a></h5>
+        </div>
+    </div>`;
+    } else {
+      top += `<div
     id="carouselExampleCaptions${i}"
     class="carousel slide"
     data-bs-ride="false"
@@ -26,11 +46,26 @@ async function addCarousel() {
           <h5><a href="booking.html?hotelID=${hotel.id}">Book Now</a></h5>
         </div>
     </div>`;
+    }
 
     let mid = "";
 
     Object.values(hotel.data.rooms).forEach((room) => {
-      mid += ` <div class="carousel-item">
+      const role = sessionStorage.getItem("user_role");
+      console.log(role);
+      if (role === "admin") {
+        mid += ` <div class="carousel-item">
+              <img
+                src="${room.roomImage}"
+                  class="d-block w-100 image"
+                  alt="..."
+                />
+              <div class="carousel-caption d-none d-md-block">
+                <h5><a href="rooms.html?hotelID=${hotel.id}&roomID=${room.roomID}">Edit Details</a></h5>
+              </div>
+             </div>`;
+      } else {
+        mid += ` <div class="carousel-item">
               <img
                 src="${room.roomImage}"
                   class="d-block w-100 image"
@@ -40,6 +75,7 @@ async function addCarousel() {
                 <h5><a href="booking.html?hotelID=${hotel.id}&roomID=${room.roomID}">Book Now</a></h5>
               </div>
              </div>`;
+      }
     });
 
     let bot = `<button

@@ -1,19 +1,4 @@
-.datepicker td.disabled.disabled-date.day,
-.datepicker td.disabled.disabled-date.day:hover {
+.bg-red {
     background-color: #e66a6a;
-    color: #000000;
-    cursor: default;
-}
-
-.datepicker table tr td.today,
-.datepicker table tr td.today:hover {
-    background-color: #ff00d4;
-    color: #312222;
-    cursor: default;
-}
-
-.datepicker table tr td.active.active,
-.datepicker table tr td.active.active:hover {
-    background-color: #00ff3c;
-    color: #000000;
+    color: black;
 }

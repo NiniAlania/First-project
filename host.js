@@ -79,7 +79,7 @@ async function roomRegister() {
 
   id = sessionStorage.getItem("user_id");
   const hotel = await getElementFromFirebase("Hotel", id);
-  if (roomPhoto.files < 0 || roomDescription2 === "") {
+  if (roomPhoto.files.length < 0 || roomDescription2 === "") {
     Swal.fire("Failed!", "Please fill out all fields", "warning");
   } else if (hotel.data.rooms == undefined || hotel.data.rooms.length < 4) {
     Swal.fire(

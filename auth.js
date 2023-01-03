@@ -136,7 +136,7 @@ async function actionRegister() {
         logIn.classList.remove("active");
         home.classList.add("active");
       } else {
-        location.href = "hotels.html";
+        location.href = "hotel.html";
         logIn.classList.remove("active");
         home.classList.add("active");
       }
