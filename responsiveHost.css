@@ -41,7 +41,7 @@ main .host-background .overlay .form {
   }
 }
 
-@media screen and (max-width: 730px) {
+@media screen and (max-width: 900px) {
     .card {
         width: 16rem;
     }
@@ -72,5 +72,14 @@ main .host-background .overlay .form {
         }
     }
 }
+
  
-  
+@media screen and (max-width: 391px) {
+    main .host-background .overlay-second .forCards .card {
+        width: 190px !important;
+    }
+
+    main .host-background .overlay-second .forCards div img {
+        width: 190px;
+    }
+}

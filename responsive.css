@@ -126,6 +126,13 @@
         header .logOut {
             margin-top: 5px;
         }
+            
+        header .right-header nav ul .profile {
+             margin-bottom: 5px;
+            margin-top: 0px;
+        }
+        
+         
 
 }
 
@@ -148,6 +155,8 @@
 
       
 }
+
+
 
 @media screen and (max-width: 500px) {
             header section .right-header nav ul {

@@ -11,6 +11,9 @@
     
 }
 
+main .gallery {
+  height: 100vh;
+}
 
 main .gallery .overlay {
   display: flex;

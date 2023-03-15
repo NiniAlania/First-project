@@ -11,6 +11,10 @@
     
 }
 
+header .right-header nav ul .profile {
+  margin-top: 3px;
+}
+
 main .gallery .overlay {
   display: flex;
   justify-content: center;
@@ -31,10 +35,11 @@ main .gallery .overlay .bookingForm .top {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  height: 100px;
+  height: 60px;
 }
 main .gallery .overlay .bookingForm .top h3 {
   font-family: var(--secondary-font);
+  margin-top: 10px;
 }
 
 main .gallery .overlay .bookingForm .bottom {
@@ -112,6 +117,6 @@ main .gallery .overlay .bookingForm .bottom .right #submit {
 }
 
 main .gallery .overlay .bookingForm .bottom .right button:hover {
-  background-color: black;
+  background: var(--primary-color) !important;
   color: var(--active-color);
 }
