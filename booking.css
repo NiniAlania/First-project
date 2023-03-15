@@ -12,8 +12,8 @@
 }
 
 main .gallery .overlay {
-  display: grid;
-  grid-template-rows: 1fr;
+  display: flex;
+  justify-content: center;
 }
 main .gallery .overlay .bookingForm {
   margin: 30px 50px;
@@ -21,14 +21,17 @@ main .gallery .overlay .bookingForm {
   height: 90%;
   background-color: white;
   border-radius: 5%;
-  display: grid;
-  grid-template-rows: 1fr 8fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 main .gallery .overlay .bookingForm .top {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  height: 100px;
 }
 main .gallery .overlay .bookingForm .top h3 {
   font-family: var(--secondary-font);
@@ -85,6 +88,9 @@ main .gallery .overlay .bookingForm .bottom .right label {
   font-size: 25px;
 }
 
+main .gallery .overlay .bookingForm .bottom .right div {
+  margin-left: 0px;
+}
 
 
 main .gallery .overlay .bookingForm .bottom .right #submit {

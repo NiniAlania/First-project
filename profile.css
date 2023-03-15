@@ -18,8 +18,6 @@ main .background .overlay .form {
 
 main .background .overlay .form div {
   margin-left: 15px;
-  display: grid;
-  grid-template-columns: 1fr;
 }
 
 main .background .overlay .form div div {

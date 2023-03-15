@@ -1,0 +1,76 @@
+@media screen and (max-width: 1150px) {
+    main .host-background .overlay .form .bottom .name input {
+        margin-left: 60px;
+    }
+
+main .host-background .overlay .form .bottom .rooms input {
+    width: 65%;
+    margin-left: 60px;
+}
+
+main .host-background .overlay .form .bottom .description textarea, main .host-background .overlay .form .bottom .rooms textarea {
+    margin-left: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+main .host-background .overlay .form .top h3 {
+    font-size: 20px;
+}
+
+main .host-background .overlay .form .bottom .font label {
+    font-size: 18px;
+}
+
+.card-img-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+main .host-background .overlay {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+main .host-background .overlay .form {
+    height: 550px;
+    width: 350px;
+  }
+}
+
+@media screen and (max-width: 730px) {
+    .card {
+        width: 16rem;
+    }
+    main .host-background {
+        height: 900px;
+    }
+
+    main .second {
+        height: 1250px !important;
+    }
+    main .host-background .overlay .form {
+        height: 510px;
+    }
+
+    main .host-background .overlay-second .forCards {
+        height: 700px;
+        margin-left: -23px;
+    }
+
+    @media screen and (max-width: 450px) {
+        main .host-background .overlay .form .bottom .rooms input,
+        main .host-background .overlay .form .bottom .rooms textarea {
+            margin-left: 40px;
+        }
+
+        .forCards {
+            width: 98%;
+        }
+    }
+}
+ 
+  

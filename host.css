@@ -22,9 +22,8 @@ main .host-background {
 }
 
 main .host-background .overlay {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  display: flex;
+  justify-content: space-around;
 }
 
 main .host-background .overlay .form {
@@ -164,6 +163,7 @@ main .host-background .overlay .form .last {
 
  main .host-background .overlay-second .display {
   width: 90%;
+  height: 100px;
  }
 
  main .host-background .overlay-second .display .table thead tr th {
@@ -182,6 +182,7 @@ main .host-background .overlay .form .last {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
   
  } 
 

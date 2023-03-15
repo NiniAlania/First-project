@@ -14,6 +14,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  width: 100%;
 }
 
 
@@ -99,6 +100,8 @@ main {
   grid-template-columns: 1fr;
   place-items: center;
   margin-top: 144px;
+  position: relative;
+  z-index: 1;
 }
 main .gallery {
   height: 600px;
@@ -188,7 +191,7 @@ main .hotels .hotels-bottom {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin-top: 20px;
 }
 
 main .hotels .hotels-bottom a {
@@ -234,8 +237,10 @@ footer {
 footer section {
   width: 75%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 footer section aside h5 {
@@ -246,10 +251,24 @@ footer section aside h5 {
   font-size: 18px;
 }
 
+
+footer section .contact {
+  margin-top: 32px;
+
+}
+
 footer section aside p {
   display: flex;
   justify-content: center;
   font-family: var(--primary-font);
+}
+
+footer section aside .address-caption {
+  margin-top: 15px;
+}
+
+footer section aside .address {
+  margin-bottom: 0px;
 }
 
 footer section aside nav ul {
@@ -259,7 +278,7 @@ footer section aside nav ul {
   gap: 30px;
   list-style: none;
   width: fit-content;
-  margin-left: 40px;
+  padding: 0px;
 }
 
 footer section aside nav ul li {

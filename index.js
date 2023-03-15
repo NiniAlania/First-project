@@ -52,7 +52,6 @@ async function addCarousel() {
 
     Object.values(hotel.data.rooms).forEach((room) => {
       const role = sessionStorage.getItem("user_role");
-      console.log(role);
       if (role === "admin") {
         mid += ` <div class="carousel-item">
               <img

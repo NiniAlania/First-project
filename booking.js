@@ -19,7 +19,7 @@ async function drawHotelInfo() {
     hotelDescr.value = hotel.data.hotelDescription;
     hotelDescr.disabled = true;
     const forImage = hotel.data.hotelImageUrl;
-    hotelImage.innerHTML += `
+    hotelImage.innerHTML = `
     <div class="card" style="width: 18rem;">
       <img src="${forImage}" class="card-img-top">
     </div>
@@ -35,7 +35,7 @@ async function drawRoomInfo() {
       if (room.roomID === roomId) {
         roomDescr.value = room.roomDescription;
         roomDescr.disabled = true;
-        roomImage.innerHTML += `
+        roomImage.innerHTML = `
       <div class="card" style="width: 18rem;">
         <img src="${room.roomImage}" class="card-img-top">
       </div>
@@ -47,15 +47,16 @@ async function drawRoomInfo() {
 
 submit.addEventListener("click", async () => {
   const id = sessionStorage.getItem("user_id");
+  const role = sessionStorage.getItem("user_role");
 
   if (id === null) {
     Swal.fire("Failed!", "Please,  sign in", "error");
     location.href = "auth.html?auth";
-  } else {
-    const dates = getDates();
+  } else if (id === hotelID || role === "admin") {
+    const selectedDates = getSelectedDates();
+    const reservations = getReservations();
 
     const hotel = await getElementFromFirebase("Hotel", hotelID);
-    console.log(hotel);
 
     const room = Object.values(hotel.data.rooms).find(
       (room) => room.roomID === roomId
@@ -64,15 +65,8 @@ submit.addEventListener("click", async () => {
       room["Reservations"] = [];
     }
 
-    const reservation = room.Reservations.find(
-      (reservation) => reservation.guestID === id
-    );
-
-    if (reservation === undefined) {
-      room.Reservations.push({ guestID: id, reservedDates: dates });
-    } else {
-      reservation.reservedDates.push(...dates);
-    }
+    room.Reservations = reservations;
+    selectedDates.forEach(date => room.Reservations.push({'date': date, 'userId': id}));
 
     await updateFirebase("Hotel", hotelID, { rooms: hotel.data.rooms });
     Swal.fire(
@@ -85,26 +79,31 @@ submit.addEventListener("click", async () => {
 });
 
 async function initCalendar() {
+  const userId = sessionStorage.getItem("user_id");
+  const userRole = sessionStorage.getItem("user_role");
   const hotel = await getElementFromFirebase("Hotel", hotelID);
-  console.log(hotel);
 
   const room = Object.values(hotel.data.rooms).find(
     (room) => room.roomID === roomId
-  );
-  console.log(room);
-
-  const dates = [];
+  ); 
 
   if (room.hasOwnProperty("Reservations")) {
-    room.Reservations.forEach((reservation) => {
-      dates.push(...reservation.reservedDates);
-    });
+    setReservations(room.Reservations, userRole === "guest" ? userId : undefined);
   }
+}
 
-  setDates(dates);
+async function disableSubmit() {
+  const userId = sessionStorage.getItem("user_id");
+  const role = sessionStorage.getItem("user_role");
+
+  if (userId !== hotelID && role === 'host') {
+    submit.disabled = true;
+    submit.style.display = "none";
+  }
 }
 
 (async () => {
+  await disableSubmit();
   await drawHotelInfo();
   await drawRoomInfo();
   await initCalendar();

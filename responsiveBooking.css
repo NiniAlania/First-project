@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-font:'Montserrat', sans-serif;
+    --secondary-font: 'Kenia', cursive;
+    --primary-color: #000000;
+    --secondary-color: #3a3838;
+    --active-color: #C9B200;
+    --hover-color: #C9B200;    
+}
+
+@media screen and (max-width: 1000px) {
+    main .hotels .hotels-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+    
+}
+
+@media screen and (max-width: 1400px) {
+    main .gallery {
+        height: 1200px;
+        background-repeat: repeat;
+    }
+
+    main .gallery .overlay .bookingForm .bottom {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+    
+    main .gallery .overlay .bookingForm .bottom .left
+     {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+     }
+    
+     main .gallery .overlay .bookingForm .bottom .mid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 300px;
+     }
+
+     main .gallery .overlay .bookingForm .bottom .mid div  {
+        width: 400px;
+     }
+     main .gallery .overlay .bookingForm .bottom .mid textarea {
+        margin-top: 100px;
+     }
+
+     main .gallery .overlay .bookingForm .bottom .right {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+     }
+
+     main .gallery .overlay .bookingForm .bottom .right label {
+        margin-left: 0px;
+        width: 200px;
+        font-size: 35px;
+     }
+
+     #hotelName {
+        font-size: 35px;
+        width: 200px;
+     }
+
+     #roomImage {
+        width: 300px;
+     }
+     
+     @media screen and (max-width: 1335px) {
+        #hotelName {
+            font-size: 25px;
+            width: 100px;
+            margin-left: 0px;
+         }
+
+         #hotelDescr {
+            margin-top: 40px;
+         }
+
+        main .gallery .overlay .bookingForm .bottom .left textarea {
+            width: 200px;
+            height: 220px;
+        }
+
+        main .gallery .overlay .bookingForm .bottom .mid textarea {
+            width: 200px;
+        }
+
+        main .gallery .overlay .bookingForm .bottom .right label {
+            font-size: 25px;
+            width: 100px;
+          }
+        main .gallery .overlay .bookingForm .bottom .mid div {
+            width: 150px;
+        }  
+     }
+     @media screen and (max-width: 1130px) {
+        img {
+            width: 200px;
+            height: 150px;
+        }
+     }
+
+     @media screen and (max-width: 1015px) {
+        #roomDescr {
+            margin-top: 70px;
+        }
+        #roomImage{
+            margin-top: 0px;
+        }
+        #hotelDescr {
+            margin-left: 20px;
+        }
+        #hotelImage {
+            margin-left: 0px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .card {
+            margin-left: 0px;
+        }
+
+     }
+     @media screen and (max-width: 960px) {
+        #hotelName {
+           font-size: 20px;
+           width: 80px;
+        }
+        #hotelImage {
+            width: 200px;
+        }
+        #hotelDescr {
+            width: 150px;
+            height: 180px;
+            margin-top: 30px;
+            margin-left: 30px;
+        }
+        main .gallery .overlay .bookingForm .bottom .left {
+            height: 200px;
+            width: 550px;
+        }
+        main .gallery .overlay .bookingForm .bottom {
+            height: 800px;
+        }
+
+        main .gallery {
+            height: 1000px;
+        }
+        #roomDescr {
+            margin-left: 20px;
+            width: 180px;
+        }
+        .card-img-top {
+            width: 200px;
+        }
+
+        #submit {
+            margin-left: 40px !important;
+            width: 100px !important;
+        }
+    }
+
+    @media screen and (max-width: 810px) {
+        main .gallery .overlay .bookingForm .bottom .left {
+            display: grid;
+            grid-template-rows: 1fr 1fr ;
+            width: 400px;
+            margin-left: 40px;
+        }
+        main .gallery .overlay .bookingForm .bottom .mid {
+            display: grid;
+            grid-template-rows: 1fr 1fr ;
+            margin-top: 200px;
+        }
+        main .gallery .overlay .bookingForm .bottom .right {
+            display: grid;
+            grid-template-rows: 1fr 3fr 1fr;
+            margin-top: 90px;
+        }
+
+        .card {
+            margin-right: 50px;
+            margin-left: 0px;
+            border: 0px;
+        }
+
+        
+
+        #roomDescr {
+            width: 300px;
+            margin-top: 50px;
+            height: 180px;
+            margin-left: 50px;
+        }
+
+        #hotelName {
+            margin-left: 20px;
+            font-size: 30px;
+            width: 300px;
+        }
+
+        main .gallery .overlay .bookingForm .bottom .right .reserve {
+            margin-left: 100px;
+        }
+        #submit {
+            margin-left: 90px !important;
+        }
+        main .gallery {
+            height: 1550px;
+        }
+        main .gallery .overlay .bookingForm .bottom {
+            margin-right: 40px;
+        }
+
+        main .gallery .overlay .bookingForm .top  {
+            width: 92%;
+        }
+
+        .card-img-top {
+            width: 280px;
+            margin-right: 40px;
+            border: 0px;
+        }
+
+    }
+
+}

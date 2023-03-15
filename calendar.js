@@ -40,15 +40,21 @@ function removeDate(date) {
   calendar.update();
 }
 
-function getDates() {
-  const dates = [];
-  dates.push(...calendar.settings.selected.dates);
-  dates.push(...Object.keys(calendar.popups));
-  return dates;;
+function getReservations() {
+  return Object.entries(calendar.popups ?? {}).map(([date, data]) => {
+      return {
+          "date": date, 
+          "userId": data.userId
+      }
+  });
 }
 
-function setDates(dates) {
+function setReservations(reservations, currentUserId) {
   calendar.settings.selected.dates = [];
-  calendar.popups = Object.fromEntries(dates.map(date => [date, { modifier: 'bg-red', html: `<button onclick="removeDate('${date}')">Remove</button>`}]));
+  calendar.popups = Object.fromEntries(reservations.map(({date, userId}) => [date, { modifier: 'bg-red', html: (currentUserId === undefined || userId === currentUserId) ? `<button onclick="removeDate('${date}')">Remove</button>` : '', userId: userId}]));
   calendar.update();
+}
+
+function getSelectedDates() {
+  return calendar.settings.selected.dates ?? [];
 }

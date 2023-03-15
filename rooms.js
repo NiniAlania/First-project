@@ -3,7 +3,6 @@ const hotelImage = document.querySelector(".yourHotelImage");
 const hotelDescr = document.querySelector("#yourHotelDescription");
 const roomPhoto = document.querySelector(".yourRoom");
 const roomDescr = document.querySelector("#yourRoomDescription");
-const calendar = document.querySelector("#calendar");
 const submit = document.querySelector(".submit");
 const edit = document.querySelector("#edit");
 const uploadHotelImage = document.querySelector(".uploadHotelImage");
@@ -21,8 +20,9 @@ async function drawHotelInfo() {
     hotelDescr.value = hotel.data.hotelDescription;
     hotelDescr.disabled = true;
     uploadHotelImage.style.display = "none";
+    hotelImage.style.display = "block";
     const forImage = hotel.data.hotelImageUrl;
-    hotelImage.innerHTML += `
+    hotelImage.innerHTML = `
     <div class="card" style="width: 18rem;">
       <img src="${forImage}" class="card-img-top">
     </div>
@@ -39,7 +39,8 @@ async function drawRoomInfo() {
         roomDescr.value = room.roomDescription;
         roomDescr.disabled = true;
         uploadRoomImage.style.display = "none";
-        roomPhoto.innerHTML += `
+        roomPhoto.style.display = "block";
+        roomPhoto.innerHTML = `
       <div class="card" style="width: 18rem;">
         <img src="${room.roomImage}" class="card-img-top">
       </div>
@@ -49,9 +50,6 @@ async function drawRoomInfo() {
   }
 }
 
-async function setCalendar() {
-  const hotel = await getElementFromFirebase("Hotel", hotelID);
-}
 
 async function updateDate() {
   const id = sessionStorage.getItem("user_id");
@@ -60,27 +58,21 @@ async function updateDate() {
     Swal.fire("Failed!", "Please,  sign in", "error");
     location.href = "auth.html?auth";
   } else {
-    const dates = getDates();
+    const selectedDates = getSelectedDates();
+    const reservations = getReservations();
 
     const hotel = await getElementFromFirebase("Hotel", hotelID);
-    console.log(hotel);
 
     const room = Object.values(hotel.data.rooms).find(
       (room) => room.roomID === roomId
     );
+
     if (!room.hasOwnProperty("Reservations")) {
       room["Reservations"] = [];
     }
 
-    const reservation = room.Reservations.find(
-      (reservation) => reservation.guestID === id
-    );
-
-    if (reservation === undefined) {
-      room.Reservations.push({ guestID: id, reservedDates: dates });
-    } else {
-      reservation.reservedDates.push(...dates);
-    }
+    room.Reservations = reservations;
+    selectedDates.forEach(date => room.Reservations.push({'date': date, 'userId': id}));
 
     await updateFirebase("Hotel", hotelID, { rooms: hotel.data.rooms });
     Swal.fire(
@@ -92,26 +84,17 @@ async function updateDate() {
   }
 }
 
+
 async function initCalendar() {
   const hotel = await getElementFromFirebase("Hotel", hotelID);
 
   const room = Object.values(hotel.data.rooms).find(
     (room) => room.roomID === roomId
-  );
-  console.log(hotel, room);
-  const dates = [];
-
-  if (!room.hasOwnProperty("Reservations")) {
-    room["Reservations"] = [];
-  }
+  ); 
 
   if (room.hasOwnProperty("Reservations")) {
-    room.Reservations.forEach((reservation) => {
-      dates.push(...reservation.reservedDates);
-    });
+    setReservations(room.Reservations);
   }
-
-  setDates(dates);
 }
 
 const role = sessionStorage.getItem("user_role");
@@ -137,7 +120,6 @@ submit.addEventListener("click", async () => {
 
 async function updateInformation() {
   const hotel = await getElementFromFirebase("Hotel", hotelID);
-  console.log(hotel);
   const room = Object.values(hotel.data.rooms).find(
     (room) => room.roomID === roomId
   );

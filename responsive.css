@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kenia&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --primary-font:'Montserrat', sans-serif;
+    --secondary-font: 'Kenia', cursive;
+    --primary-color: #000000;
+    --secondary-color: #3a3838;
+    --active-color: #C9B200;
+    --hover-color: #C9B200;    
+}
+
+@media screen and (max-width: 1150px) {
+    footer section aside p {
+        font-size: 12px;
+    }
+
+    footer section aside nav ul li {
+        font-size: 15px;
+    }
+
+    header section .right-header nav ul li a {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main .hotels .hotels-top {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+    }
+
+@media screen and (max-width: 950px) {
+    footer section aside p {
+        font-size: 10px;
+    }
+
+    footer section aside nav ul li {
+        font-size: 13px;
+    }
+
+    header section .right-header nav ul li a {
+        font-size: 14px;
+    }
+
+    main .gallery {
+        height: 500px;
+    }
+
+    header .logOut {
+        margin-top: 3px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .d-none {
+        display: block!important;
+    }
+}
+@media screen and (max-width: 745px) {
+    footer section aside p {
+        font-size: 16px;
+    }
+
+    footer section aside nav ul li {
+        font-size: 20px;
+    }
+    
+    footer section .left {
+        margin-left: 40px;
+    }
+
+    footer section .right {
+        margin-right: 40px;
+    }
+
+    footer section .second-right {
+        margin-right: 80px;
+    }
+
+}    
+
+@media screen and (max-width: 670px) {
+        footer section .left {
+            margin-left: 0px;
+        }
+    
+        footer section .right {
+            margin-right: 0px;
+        }
+    
+        footer section .second-right {
+            margin-right: 40px;
+        }
+
+        header section .right-header nav ul li a {
+            font-size: 12px;
+        }
+
+        header section .right-header nav ul {
+            gap: 20px;
+        }
+
+        header section .left-header a {
+            font-size: 15px;
+        }
+
+        footer section aside p {
+            font-size: 14px;
+        }
+    
+        footer section aside nav ul li {
+            font-size: 15px;
+        }
+
+        main .hotels .hotels-bottom a {
+            width: 150px;
+            height: 40px;
+        }
+
+        main .gallery {
+            height: 450px;
+        }
+
+        header .logOut {
+            margin-top: 5px;
+        }
+
+}
+
+@media screen and (max-width: 670px) {
+    main .background .overlay .form {
+        width: 300px;
+    }
+    main .background .overlay .form .top .top-button {
+        font-size: 20px;
+    }
+    main .background .overlay .form div input {
+        width: 270px;
+    }
+    main .background .overlay .form div div {
+        margin-left: 0px;
+    }
+    header .profile {
+        margin-top: 4px;
+    }
+
+      
+}
+
+@media screen and (max-width: 500px) {
+            header section .right-header nav ul {
+                gap: 8px;
+            }
+
+            header section .right-header nav ul li a {
+                font-size: 10px;
+            }
+
+            header section .left-header a {
+                font-size: 12px;
+            }
+
+            footer section aside p {
+                font-size: 10px;
+            }
+        
+            footer section aside nav ul li {
+                font-size: 11px;
+            }
+            footer section .right {
+                margin-right: 22px;
+            }
+
+            main .gallery .overlay h1 {
+                align-items: flex-end;
+                font-size: 30px;
+            }
+
+            main .gallery .overlay h2 {
+                font-size: 25px;
+            }
+
+            main .hotels h2 { 
+                font-size: 30px;
+            }
+
+            main .hotels .hotels-top .carousel .carousel-item .image {
+                height: 300px;
+            }
+
+            main .hotels .hotels-bottom a {
+                width: 100px;
+                height: 40px;
+            }
+
+            header .logOut {
+                margin-top: 7px;
+            }
+
+            header .profile {
+                margin-top: 8px;
+            } 
+            
+ }
+
+ @media screen and (max-width: 430px) {
+    main .background .overlay .form {
+        width: 200px;
+    }
+    main .background .overlay .form .top .top-button {
+        font-size: 15px;
+    }
+    main .background .overlay .form .bottom {
+        margin-left: 20px;
+    }
+    
+    main .background .overlay .form .top {
+        margin: 15px 20px 15px 20px;
+    }
+    main .background .overlay .form div input {
+        width: 180px;
+    }
+ }
+
+ @media screen and (max-width: 380px) {
+    header section .right-header nav ul li a {
+        font-size: 8px;
+    }
+
+    header section .right-header nav ul {
+        gap: 4px;
+    }
+
+    main .gallery {
+        height: 400px;
+    }
+
+    main .gallery .overlay h1 {
+        align-items: flex-end;
+        font-size: 22px;
+    }
+
+    main .gallery .overlay h2 {
+        font-size: 17px;
+    }
+
+    main .hotels h2 { 
+        font-size: 20px;
+    }
+
+
+    main .hotels .hotels-bottom a {
+        width: 80px;
+        height: 35px;
+    }
+
+    main .hotels .hotels-bottom a button {
+        font-size: 15px;
+    }
+
+    footer section aside p {
+        font-size: 7px;
+    }
+
+    footer section aside nav ul li {
+        font-size: 8px;
+    }
+
+    footer section .second-right {
+        margin-right: 30px;
+    }
+
+    footer section aside nav ul {
+        gap: 20px;
+    }
+    
+    footer section aside h5 {
+        font-size: 10px;
+    }
+
+    main .hotels .hotels-top .carousel .carousel-item h5 a {
+        font-size: 20px;
+    }
+
+    header .logOut {
+        margin-top: 10px;
+    }
+
+    header .profile {
+        margin-top: 8px;
+    } 
+ }
+    
+}
+
+
+
+

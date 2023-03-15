@@ -1,0 +1,25 @@
+@media screen and (max-width:670px) {
+    main .background .overlay .form .bottom div input {
+        width: 240px;
+    }
+    
+    main .background .overlay .form .bottom div div span {
+       display: none;
+    }
+
+    main .background .overlay .form .bottom div div input {
+        width: 150px;
+    }
+
+    main .background .overlay .form .bottom .radio input {
+        width: 20px;
+    }
+
+
+}
+
+@media screen and (max-width:430px) {
+    main .background .overlay .form .bottom div input {
+        width: 160px;
+    }
+} 
