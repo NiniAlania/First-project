@@ -52,7 +52,7 @@ submit.addEventListener("click", async () => {
   if (id === null) {
     Swal.fire("Failed!", "Please,  sign in", "error");
     location.href = "auth.html?auth";
-  } else if (id === hotelID || role === "admin") {
+  } else if (id !== hotelID || role === "admin") {
     const selectedDates = getSelectedDates();
     const reservations = getReservations();
 

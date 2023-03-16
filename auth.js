@@ -47,7 +47,7 @@ function toggle(action) {
     register.classList.add("active");
   }
 
-  actionButton.textContent = isAction ? "Sign up" : "Sing in";
+  actionButton.textContent = isAction ? "Sign up" : "Sign in";
 }
 actionToggle.forEach((element) => {
   element.style.display = isAction ? "block" : "none";
@@ -157,6 +157,7 @@ async function actionLogin() {
     Swal.fire("Failed!", "Wrong data", "error");
   } else {
     Swal.fire("Welcome", "You have successfully authorised!", "success");
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const id = usersArrayUpdated[userIndex].id;
     const role = usersArrayUpdated[userIndex].data.role;
     sessionStorage.setItem("user_id", id);

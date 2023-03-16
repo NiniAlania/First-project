@@ -153,6 +153,10 @@ main .host-background .overlay .form .last {
   justify-content: center;
  }
 
+ .card-img-top {
+  height: 150px;
+ }
+
 
  main .host-background .overlay-second {
   display: grid;
